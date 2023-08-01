@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4.2</title>
+  </head>
+  <body>
+    <div>
+      <input type="number" id="inp" />
+      <input type="button" value="Check" id="btn" />
+      <p id="opt"></p>
+    </div>
+  </body>
+  <script>
+    cc = document.getElementById("inp").value;
+    document.getElementById("btn").addEventListener("click", () => {
+      const cc = document.getElementById("inp").value;
+      if (/^\d{16}$/.test(cc)) {
+        if (new Set(cc).size >= 2) {
+          if (cc.slice(-1) % 2 == 0) {
+            const sum = cc
+              .split("")
+              .reduce((acc, curr) => acc + parseInt(curr), 0);
+            if (sum > 16) {
+              document.getElementById("opt").innerHTML = "True";
+            } else {
+              document.getElementById("opt").innerHTML = "False";
+            }
+          } else {
+            document.getElementById("opt").innerHTML = "False";
+          }
+        } else {
+          document.getElementById("opt").innerHTML = "False";
+        }
+      } else {
+        document.getElementById("opt").innerHTML = "False";
+      }
+    });
+  </script>
+</html>
